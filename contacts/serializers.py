@@ -9,6 +9,7 @@ class ContactSerializer(serializers.ModelSerializer):
             "id",
             "fn",
             "non_latin_fn",
+            "favorite",
             "x_handle",
             "avatar_url",
             "notes",

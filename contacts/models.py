@@ -23,6 +23,11 @@ class Contact(TimeStampedModel):
         max_length=100,
         help_text=_("Full Name in non latin characters. Blank is ok. Max 100 char."),
     )
+    favorite = models.BooleanField(
+        _("Favorite"),
+        null=False,
+        blank=False,
+    )
     x_handle = models.CharField(
         _("X Handle"),
         null=False,
