@@ -9,15 +9,15 @@ class Contact(TimeStampedModel):
     Base Model for contacts to be stored in
     """
 
-    full_name = models.CharField(
+    fn = models.CharField(
         _("Full Name"),
         null=False,
         blank=False,
         max_length=100,
         help_text=_("Full Name as written naturally. Max 100 char."),
     )
-    non_latin_full_name = models.CharField(
-        _("Non Latin Name"),
+    non_latin_fn = models.CharField(
+        _("Non Latin Full Name"),
         null=False,
         blank=True,
         max_length=100,
@@ -42,4 +42,4 @@ class Contact(TimeStampedModel):
     )
 
     def __str__(self) -> str:
-        return self.full_name
+        return self.fn
