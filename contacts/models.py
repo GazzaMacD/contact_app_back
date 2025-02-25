@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -9,6 +11,15 @@ class Contact(TimeStampedModel):
     Base Model for contacts to be stored in
     """
 
+    pub_id = models.UUIDField(
+        _("Public ID"),
+        null=False,
+        blank=False,
+        default=uuid.uuid4,
+        unique=True,
+        editable=False,
+        help_text=_("Non Editable, public id"),
+    )
     fn = models.CharField(
         _("Full Name"),
         null=False,
