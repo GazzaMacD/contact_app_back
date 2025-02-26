@@ -40,3 +40,11 @@ class ContactDetail(APIView):
         snippet = self.get_object(pub_id)
         serializer = ContactSerializer(snippet)
         return Response(serializer.data)
+
+    def patch(self, request, pub_id, format=None):
+        snippet = self.get_object(pub_id)
+        serializer = ContactSerializer(snippet, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
