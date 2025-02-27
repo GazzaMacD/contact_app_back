@@ -37,14 +37,19 @@ class ContactDetail(APIView):
             raise Http404
 
     def get(self, request, pub_id, format=None):
-        snippet = self.get_object(pub_id)
-        serializer = ContactSerializer(snippet)
+        contact = self.get_object(pub_id)
+        serializer = ContactSerializer(contact)
         return Response(serializer.data)
 
     def patch(self, request, pub_id, format=None):
-        snippet = self.get_object(pub_id)
-        serializer = ContactSerializer(snippet, data=request.data, partial=True)
+        contact = self.get_object(pub_id)
+        serializer = ContactSerializer(contact, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pub_id, format=None):
+        contact = self.get_object(pub_id)
+        contact.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
