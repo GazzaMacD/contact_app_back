@@ -2,6 +2,7 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
 
 from contacts.models import Contact
 from contacts.serializers import ContactSerializer
@@ -11,6 +12,8 @@ class ContactList(APIView):
     """
     List all contacts or create new contact
     """
+
+    parser_classes = (JSONParser, MultiPartParser, FormParser)
 
     def get(self, request, format=None):
         contacts = Contact.objects.all()

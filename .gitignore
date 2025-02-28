@@ -165,5 +165,9 @@ cython_debug/
 dev.py
 prod.py
 
+# Media and static files
+/static/
+/media/
+
 # Other
 .project_files/

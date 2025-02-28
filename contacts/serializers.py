@@ -11,6 +11,7 @@ class ContactSerializer(serializers.ModelSerializer):
             "non_latin_fn",
             "favorite",
             "x_handle",
+            "profile_image",
             "avatar_url",
             "notes",
         ]
