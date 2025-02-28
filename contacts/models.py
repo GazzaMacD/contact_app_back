@@ -46,6 +46,14 @@ class Contact(TimeStampedModel):
         max_length=100,
         help_text=_("Blank is ok. Max 100 char."),
     )
+    profile_image = models.ImageField(
+        upload_to="profile_images/",
+        null=False,
+        blank=True,
+        help_text=_(
+            "Not Required. Image here will be prioritized over avatar_url image. Image should be 1080x1080"
+        ),
+    )
     avatar_url = models.URLField(
         _("Avatar URL"),
         null=False,
